@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPK Professional System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>SPK APP</h2>
+        </div>
+
+        <ul>
+            <li class="menu active-menu"
+             onclick="showPage('dashboard', this)">
+             Dashboard
+            </li>
+
+            <li class="menu"
+            onclick="showPage('saw', this)">
+            Metode SAW
+            </li>
+
+            <li class="menu"
+            onclick="showPage('wp', this)">
+            Metode WP
+            </li>
+
+            <li class="menu"
+             onclick="showPage('smart', this)">
+            Metode SMART
+            </li>
+        </ul>
+            
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+        <!-- TOPBAR -->
+        <div class="topbar">
+
+            <input type="text" placeholder="Cari Supplier...">
+
+            <div class="profile">
+                Admin SPK
+            </div>
+
+        </div>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page active">
+
+            <header>
+                <h1>SISTEM PENDUKUNG KEPUTUSAN</h1>
+                <p>
+                    Aplikasi Professional Sistem Pendukung Keputusan
+                </p>
+            </header>
+
+            <!-- STATISTIK -->
+            <div class="stats-grid">
+
+                <div class="stats-card">
+                    <h3>Total Supplier</h3>
+                    <p>3</p>
+                </div>
+
+                <div class="stats-card">
+                    <h3>Total Kriteria</h3>
+                    <p>4</p>
+                </div>
+
+                <div class="stats-card">
+                    <h3>Metode Aktif</h3>
+                    <p>3</p>
+                </div>
+
+                <div class="stats-card">
+                    <h3>Supplier Terbaik</h3>
+                    <p>Supplier B</p>
+                </div>
+
+            </div>
+
+            <!-- INFO -->
+            <div class="info-grid">
+
+                <div class="info-card">
+                    <h3>Metode SAW</h3>
+
+                    <p>
+                        SAW menggunakan metode penjumlahan terbobot
+                        untuk menentukan ranking terbaik.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Metode WP</h3>
+
+                    <p>
+                        WP menggunakan proses perkalian berpangkat
+                        berdasarkan bobot kriteria.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Metode SMART</h3>
+
+                    <p>
+                        SMART menggunakan utility value untuk
+                        menghasilkan keputusan terbaik.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- GRAFIK -->
+            <div class="card">
+
+                <h2>Grafik Ranking Supplier</h2>
+
+                <canvas id="rankingChart"></canvas>
+
+            </div>
+
+        </section>
+
+        <!-- SAW -->
+        <section id="saw" class="page">
+
+            <div class="card">
+
+                <h2>Metode SAW</h2>
+
+                <button onclick="hitungSAW()">
+                    Hitung SAW
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- WP -->
+        <section id="wp" class="page">
+
+            <div class="card">
+
+                <h2>Metode WP</h2>
+
+                <button onclick="hitungWP()">
+                    Hitung WP
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- SMART -->
+        <section id="smart" class="page">
+
+            <div class="card">
+
+                <h2>Metode SMART</h2>
+
+                <button onclick="hitungSMART()">
+                    Hitung SMART
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- TABEL -->
+        <div class="card">
+
+            <h2>Data Supplier</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Supplier</th>
+                        <th>Harga</th>
+                        <th>Kualitas</th>
+                        <th>Pengiriman</th>
+                        <th>Pelayanan</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Supplier A</td>
+                        <td>80</td>
+                        <td>90</td>
+                        <td>85</td>
+                        <td>88</td>
+                    </tr>
+
+                    <tr>
+                        <td>Supplier B</td>
+                        <td>70</td>
+                        <td>95</td>
+                        <td>80</td>
+                        <td>90</td>
+                    </tr>
+
+                    <tr>
+                        <td>Supplier C</td>
+                        <td>85</td>
+                        <td>88</td>
+                        <td>92</td>
+                        <td>84</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- HASIL -->
+        <div class="card">
+
+            <h2>Hasil Ranking</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Alternatif</th>
+                        <th>Nilai</th>
+                        <th>Ranking</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="hasilBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- DARK MODE -->
+        <button onclick="toggleDarkMode()">
+            Toggle Dark Mode
+        </button>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
